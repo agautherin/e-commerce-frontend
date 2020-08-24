@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
+import GamesContainer from './container/GamesContainer'
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
+class App extends React.Component {
+  state = {
+    games: []
+  }
+
+  componentDidMount(){
+    this.getGames() 
+  }
+
+  getGames = () => {
+    fetch('http://localhost:3000/games')
+    .then(res => res.json())
+    .then(gamesData => this.setState({
+      games: gamesData
+    }))
+  }
+
+  render() { 
+    return (
+      <div>
+        <GamesContainer games={this.state.games}/>
+      </div>
+      );
+  }
+}
+ 
 export default App;
+
+
+

@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.front-card {
+  background: url(http://images.wisegeek.com/planet-earth.jpg);
+}
+
+.back-card {
+  background: url(http://haughtonmarsproject.com/wp-content/uploads/2013/11/Mars-1-Project.jpg);
+}
